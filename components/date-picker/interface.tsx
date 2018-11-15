@@ -42,7 +42,7 @@ export interface DatePickerProps extends PickerProps, SinglePickerProps {
     disabledSeconds?: () => number[],
   };
   onOpenChange?: (status: boolean) => void;
-  onOk?: (selectedTime: RangePickerValue) => void;
+  onOk?: (selectedTime: moment.Moment) => void;
   placeholder?: string;
 }
 

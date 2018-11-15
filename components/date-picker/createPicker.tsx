@@ -12,42 +12,31 @@ import getDataOrAriaProps from '../_util/getDataOrAriaProps';
 
 export interface PickerProps {
   value?: moment.Moment;
-  open?: boolean;
   prefixCls: string;
 }
 
-export interface PickerState {
-  open: boolean;
-  value: moment.Moment | null;
-  showDate: moment.Moment | null;
-}
-
 export default function createPicker(TheCalendar: React.ComponentClass): any {
-  class CalenderWrapper extends React.Component<any, PickerState> {
+  class CalenderWrapper extends React.Component<any, any> {
     static defaultProps = {
       prefixCls: 'ant-calendar',
       allowClear: true,
       showToday: true,
     };
 
-    static getDerivedStateFromProps(nextProps: PickerProps, prevState: PickerState) {
-      const state: Partial<PickerState> = {};
-      let open: boolean = prevState.open;
-
-      if ('open' in nextProps) {
-        state.open = nextProps.open;
-        open = nextProps.open || false;
-      }
+    static getDerivedStateFromProps(nextProps: PickerProps, prevState: any) {
+      let state = null;
       if ('value' in nextProps) {
-        state.value = nextProps.value;
-        if (
-          nextProps.value !== prevState.value ||
-          (!open && nextProps.value !== prevState.showDate)
-        ) {
-          state.showDate = nextProps.value;
+        state = {
+          value: nextProps.value,
+        };
+        if (nextProps.value !== prevState.value) {
+          state = {
+            ...state,
+            showDate: nextProps.value,
+          };
         }
       }
-      return Object.keys(state).length > 0 ? state : null;
+      return state;
     }
 
     private input: any;
@@ -64,7 +53,6 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
       this.state = {
         value,
         showDate: value,
-        open: false,
       };
     }
 
@@ -99,17 +87,6 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
       this.setState({ showDate: value });
     }
 
-    handleOpenChange = (open: boolean) => {
-      const { onOpenChange } = this.props;
-      if (!('open' in this.props)) {
-        this.setState({ open });
-      }
-
-      if (onOpenChange) {
-        onOpenChange(open);
-      }
-    };
-
     focus() {
       this.input.focus();
     }
@@ -123,7 +100,7 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
     }
 
     render() {
-      const { value, showDate, open } = this.state;
+      const { value, showDate } = this.state;
       const props = omit(this.props, ['onChange']);
       const { prefixCls, locale, localeCode, suffixIcon } = props;
 
@@ -173,6 +150,10 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
           className={calendarClassName}
           onOk={props.onOk}
           dateRender={props.dateRender}
+          monthflow={this.props.monthflow}
+          type={this.props.type}
+          selectedvalue={this.props.selectedvalue}
+          onQuarterSelect={this.props.onQuarterSelect}
           format={props.format}
           showToday={props.showToday}
           monthCellContentRender={props.monthCellContentRender}
@@ -240,8 +221,6 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
             value={value}
             prefixCls={`${prefixCls}-picker-container`}
             style={props.popupStyle}
-            open={open}
-            onOpenChange={this.handleOpenChange}
           >
             {input}
           </RcDatePicker>

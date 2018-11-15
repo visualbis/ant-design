@@ -240,23 +240,11 @@ export default class Calendar extends React.Component<CalendarProps, CalendarSta
     );
   }
 
-  getDefaultLocale = () => {
-    const result = {
-      ...enUS,
-      ...this.props.locale,
-    };
-    result.lang = {
-      ...result.lang,
-      ...(this.props.locale || {}).lang,
-    };
-    return result;
-  }
-
   render() {
     return (
       <LocaleReceiver
         componentName="Calendar"
-        defaultLocale={this.getDefaultLocale}
+        defaultLocale={enUS}
       >
         {this.renderCalendar}
       </LocaleReceiver>
