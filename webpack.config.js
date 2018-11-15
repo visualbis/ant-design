@@ -24,11 +24,12 @@ const config = {
     }},
   plugins: [
     new BundleAnalyzerPlugin({generateStatsFile:true}),
+	new webpack.ContextReplacementPlugin(/components[/\\]locale[/-]provider$/, /en_US\.tsx|LocaleReceiver\.tsx/),
 	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(en-us)\.js/),
-	new webpack.ContextReplacementPlugin(/components[/\\]local[/-]provider$/, /en_US\.tsx|LocaleReceiver\.tsx/),
 	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_US)\.tsx/),
 	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_US)\.tsx/),
-	new webpack.ContextReplacementPlugin(/components[/\\]time[/-]picker[/\\]locale$/, /(en_US)\.js/),	
+	new webpack.ContextReplacementPlugin(/components[/\\]time[/-]picker[/\\]locale$/, /(en_US)\.tsx/),
+	new webpack.ContextReplacementPlugin(/rc[-]pagination[/\\]lib[/\\]locale$/, /(en_US)\.js/),	
 	new webpack.ContextReplacementPlugin(/calendar[/\\]lib[/\\]locale$/, /(en_US)\.js/)
   ],
   // Loaders
