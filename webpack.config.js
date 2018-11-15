@@ -2,7 +2,7 @@
 // Imports
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const webpack = require('webpack');
 require("babel-register");
 
 const config = {
@@ -15,10 +15,18 @@ const config = {
   },
   resolve: { extensions: ['.tsx','.ts', '.js','.css','.less'],
   alias:{
+    "react-dom": path.resolve('./node_modules/react-dom'),
+    "moment": path.resolve('./node_modules/moment'),
       //"@ant-design/icons": "purched-antd-icons"
     }},
   plugins: [
-    new BundleAnalyzerPlugin({generateStatsFile:true})
+    new BundleAnalyzerPlugin({generateStatsFile:true}),
+	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+	//new webpack.ContextReplacementPlugin(/components[/\\]local[/-]provider$/, /en|LocaleReceiver/),
+	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_GB)\.js/,),
+	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_GB)\.js/,),
+	//new webpack.ContextReplacementPlugin(/components[/\\]time[/-]picker[/\\]locale$, /(en_GB)\.js/),	
+	new webpack.ContextReplacementPlugin(/lib[/\\]locale$/, /(en_GB)\.js/,)
   ],
   // Loaders
   module: {
