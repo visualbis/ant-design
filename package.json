@@ -88,7 +88,8 @@
     "react-lifecycles-compat": "^3.0.4",
     "react-slick": "~0.23.2",
     "shallowequal": "^1.1.0",
-    "warning": "~4.0.2"
+    "warning": "~4.0.2",
+    "webpack-bundle-analyzer": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -239,8 +240,8 @@
       "npm run lint-staged:demo"
     ]
   },
-  "pre-commit": [
-    "lint-staged"
+  "pre-commit": [ 
+     
   ],
   "sideEffects": [
     "dist/*",
