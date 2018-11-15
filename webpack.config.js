@@ -16,17 +16,20 @@ const config = {
   resolve: { extensions: ['.tsx','.ts', '.js','.css','.less'],
   alias:{
     "react-dom": path.resolve('./node_modules/react-dom'),
+    "react": path.resolve('./node_modules/react'),
+    "prop-types": path.resolve('./node_modules/prop-types'),
     "moment": path.resolve('./node_modules/moment'),
+    "create-react-class": path.resolve('./node_modules/create-react-class')
       //"@ant-design/icons": "purched-antd-icons"
     }},
   plugins: [
     new BundleAnalyzerPlugin({generateStatsFile:true}),
-	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-	//new webpack.ContextReplacementPlugin(/components[/\\]local[/-]provider$/, /en|LocaleReceiver/),
-	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_GB)\.js/,),
-	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_GB)\.js/,),
-	//new webpack.ContextReplacementPlugin(/components[/\\]time[/-]picker[/\\]locale$, /(en_GB)\.js/),	
-	new webpack.ContextReplacementPlugin(/lib[/\\]locale$/, /(en_GB)\.js/,)
+	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(en-us)\.js/),
+	new webpack.ContextReplacementPlugin(/components[/\\]local[/-]provider$/, /en_US\.tsx|LocaleReceiver\.tsx/),
+	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_US)\.tsx/),
+	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_US)\.tsx/),
+	new webpack.ContextReplacementPlugin(/components[/\\]time[/-]picker[/\\]locale$/, /(en_US)\.js/),	
+	new webpack.ContextReplacementPlugin(/calendar[/\\]lib[/\\]locale$/, /(en_US)\.js/)
   ],
   // Loaders
   module: {
