@@ -5,6 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./date-picker/style"
 import "./calendar/style"
+const {MonthPicker} = DatePicker;
 const ENV = process.env.NODE_ENV;
 if (ENV !== 'production' &&
   ENV !== 'test' &&
