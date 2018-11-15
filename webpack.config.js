@@ -1,6 +1,8 @@
 
 // Imports
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 require("babel-register");
 
 const config = {
@@ -11,8 +13,13 @@ const config = {
     libraryTarget: "window",
     library:"calendar",
   },
-  resolve: { extensions: ['.tsx','.ts', '.js','.css','.less']},
- 
+  resolve: { extensions: ['.tsx','.ts', '.js','.css','.less'],
+  alias:{
+      //"@ant-design/icons": "purched-antd-icons"
+    }},
+  plugins: [
+    new BundleAnalyzerPlugin({generateStatsFile:true})
+  ],
   // Loaders
   module: {
     rules : [
