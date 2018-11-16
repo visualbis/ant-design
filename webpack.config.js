@@ -17,13 +17,20 @@ const config = {
   alias:{
     "react-dom": path.resolve('./node_modules/react-dom'),
     "react": path.resolve('./node_modules/react'),
+    "object-assign": path.resolve('./node_modules/object-assign'),
     "prop-types": path.resolve('./node_modules/prop-types'),
+    "add-dom-event-listener": path.resolve('./node_modules/add-dom-event-listener'),
+    "core-js": path.resolve('./node_modules/core-js'),
+    "component-classes": path.resolve('./node_modules/component-classes'),
+    "babel-runtime": path.resolve('./node_modules/babel-runtime'),
     "moment": path.resolve('./node_modules/moment'),
+    "raf": path.resolve('./node_modules/raf'),
+    "classnames": path.resolve('./node_modules/classnames'),
     "create-react-class": path.resolve('./node_modules/create-react-class'),
     "@ant-design/icons": "purched-antd-icons"
     }},
   plugins: [
-    new BundleAnalyzerPlugin({generateStatsFile:true}), 
+    new BundleAnalyzerPlugin({generateStatsFile:false}),  
 	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(en-us)\.js/),
 	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_US)\.tsx/),
 	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_US)\.tsx/),
