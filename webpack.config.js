@@ -4,9 +4,9 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 require("babel-register");
-
+require("babel-polyfill");
 const config = {
-  entry: './index-with-locales.js',
+  entry: ["babel-polyfill", './index-with-locales.js'],
     output: {
     path: path.resolve(__dirname, './client'),
     filename: 'bundle.js',
