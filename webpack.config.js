@@ -19,8 +19,8 @@ const config = {
     "react": path.resolve('./node_modules/react'),
     "prop-types": path.resolve('./node_modules/prop-types'),
     "moment": path.resolve('./node_modules/moment'),
-    "create-react-class": path.resolve('./node_modules/create-react-class')
-      //"@ant-design/icons": "purched-antd-icons"
+    "create-react-class": path.resolve('./node_modules/create-react-class'),
+    "@ant-design/icons": "purched-antd-icons"
     }},
   plugins: [
     new BundleAnalyzerPlugin({generateStatsFile:true}), 
