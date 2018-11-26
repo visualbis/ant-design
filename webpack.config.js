@@ -5,9 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 require("babel-register");
-
+require("babel-polyfill");
 const config = {
-  entry: './index-with-locales.js',
+  entry: ["babel-polyfill", './index-with-locales.js'],
     output: {
     path: path.resolve(__dirname, './client'),
     filename: 'bundle.js',
@@ -18,8 +18,15 @@ const config = {
   alias:{
     "react-dom": path.resolve('./node_modules/react-dom'),
     "react": path.resolve('./node_modules/react'),
+    "object-assign": path.resolve('./node_modules/object-assign'),
     "prop-types": path.resolve('./node_modules/prop-types'),
+    "add-dom-event-listener": path.resolve('./node_modules/add-dom-event-listener'),
+    "core-js": path.resolve('./node_modules/core-js'),
+    "component-classes": path.resolve('./node_modules/component-classes'),
+    "babel-runtime": path.resolve('./node_modules/babel-runtime'),
     "moment": path.resolve('./node_modules/moment'),
+    "raf": path.resolve('./node_modules/raf'),
+    "classnames": path.resolve('./node_modules/classnames'),
     "create-react-class": path.resolve('./node_modules/create-react-class'),
     "@ant-design/icons": "purched-antd-icons"
     }},
