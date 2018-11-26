@@ -154,6 +154,7 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
           type={this.props.type}
           selectedvalue={this.props.selectedvalue}
           onQuarterSelect={this.props.onQuarterSelect}
+          calendarprops = {this.props.calendarprops}
           format={props.format}
           showToday={props.showToday}
           monthCellContentRender={props.monthCellContentRender}
