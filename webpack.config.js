@@ -9,7 +9,7 @@ require("babel-polyfill");
 const config = {
   entry: ["babel-polyfill", './index-with-locales.js'],
     output: {
-    path: path.resolve(__dirname, './client'),
+    path: path.resolve(__dirname, '../PowerBI/periodSelector/external'),
     filename: 'bundle.js',
     libraryTarget: "window",
     library:"calendar",
