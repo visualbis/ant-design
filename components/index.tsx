@@ -166,5 +166,6 @@ class App extends Component {
 
 /* @remove-on-es-build-end */
 export  function loadEditor(element, options, config) {
-  ReactDOM.render(<MonthPicker  open={options.calendarprops.open} calendarprops={options.calendarprops} monthCellContentRender={options.contentRender.bind(this)} onSelect={options.onDateSelect.bind(this)} onQuarterSelect={options.onQuarterSelect.bind(this)} />, element);
+  ReactDOM.render(<MonthPicker  open={options.calendarprops.open} calendarprops={options.calendarprops} disabledDate={options.disabledDate.bind(this)} 
+  monthCellContentRender={options.contentRender.bind(this)} onSelect={options.onDateSelect.bind(this)} onQuarterSelect={options.onQuarterSelect.bind(this)} />, element);
 }
