@@ -1,4 +1,4 @@
-import CalendarLocale from 'rc-calendar/lib/locale/zh_CN';
+import CalendarLocale from '@visualbi/rc-calendar/lib/locale/zh_CN';
 import TimePickerLocale from '../../time-picker/locale/zh_CN';
 
 const locale = {

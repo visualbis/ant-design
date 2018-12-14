@@ -1,4 +1,4 @@
-import CalendarLocale from 'rc-calendar/lib/locale/ja_JP';
+import CalendarLocale from '@visualbi/rc-calendar/lib/locale/ja_JP';
 import TimePickerLocale from '../../time-picker/locale/ja_JP';
 
 const locale = {

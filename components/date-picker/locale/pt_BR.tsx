@@ -1,4 +1,4 @@
-import CalendarLocale from 'rc-calendar/lib/locale/pt_BR';
+import CalendarLocale from '@visualbi/rc-calendar/lib/locale/pt_BR';
 import TimePickerLocale from '../../time-picker/locale/pt_BR';
 
 // Merge into a locale object
