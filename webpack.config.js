@@ -1,6 +1,7 @@
 
 // Imports
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 require("babel-register");
@@ -8,7 +9,7 @@ require("babel-polyfill");
 const config = {
   entry: ["babel-polyfill", './index-with-locales.js'],
     output: {
-    path: path.resolve(__dirname, './client'),
+    path: path.resolve(__dirname, '../PowerBI/periodSelector/external'),
     filename: 'bundle.js',
     libraryTarget: "window",
     library:"calendar",
@@ -30,7 +31,11 @@ const config = {
     "@ant-design/icons": "purched-antd-icons"
     }},
   plugins: [
-    new BundleAnalyzerPlugin({generateStatsFile:false}),  
+    new HtmlWebpackPlugin({
+      filename: 'index.html',    
+      template: 'template.html'
+    }),    
+  new BundleAnalyzerPlugin({generateStatsFile:true}), 
 	new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(en-us)\.js/),
 	new webpack.ContextReplacementPlugin(/components[/\\]date[/-]picker[/\\]locale$/, /(en_US)\.tsx/),
 	new webpack.ContextReplacementPlugin(/components[/\\]calendar[/\\]locale$/, /(en_US)\.tsx/),
@@ -57,6 +62,16 @@ const config = {
         }, {
           loader: 'less-loader' // compiles Less to CSS
         }]},
+        {
+          test: /\.html$/,
+          use: [ {
+            loader: 'html-loader',
+            options: {             
+              removeComments: false,
+              collapseWhitespace: false
+            }          
+          }],
+        },
      
     { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
