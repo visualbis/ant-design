@@ -1,6 +1,6 @@
 import * as React from 'react';
-import RcCalendar from 'rc-calendar';
-import MonthCalendar from 'rc-calendar/lib/MonthCalendar';
+import RcCalendar from '@visualbi/rc-calendar';
+import MonthCalendar from '@visualbi/rc-calendar/lib/MonthCalendar';
 import createPicker from './createPicker';
 import wrapPicker from './wrapPicker';
 import RangePicker from './RangePicker';
