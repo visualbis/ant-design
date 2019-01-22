@@ -29,7 +29,7 @@ class App extends Component {
   
   
   selectedvalue[cyear] = [cmonth];
-    this.state= {"calendarprops":{"enablefiscal":true,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
+    this.state= {"calendarprops":{"defaultyear":2011,"enablefiscal":true,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
   }
    onDateSelect(value){
     const year = value._d.getFullYear();

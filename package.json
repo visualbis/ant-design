@@ -41,7 +41,7 @@
   "dependencies": {
     "@ant-design/icons": "~1.1.15",
     "@ant-design/icons-react": "~1.1.2",
-    "@visualbi/rc-calendar": "9.7.14",
+    "@visualbi/rc-calendar": "file:D:/GIT_REPO/calendar",
     "@visualbi/rc-trigger": "2.6.9",
     "array-tree-filter": "^2.1.0",
     "babel-polyfill": "^6.26.0",
