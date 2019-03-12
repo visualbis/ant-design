@@ -9,7 +9,7 @@ import Icon from '../icon';
 import warning from '../_util/warning';
 import interopDefault from '../_util/interopDefault';
 import getDataOrAriaProps from '../_util/getDataOrAriaProps';
-
+import { Style } from "react-style-tag";
 export interface PickerProps {
   value?: moment.Moment;
   prefixCls: string;
@@ -216,6 +216,9 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
           onMouseEnter={props.onMouseEnter}
           onMouseLeave={props.onMouseLeave}
         >
+          <Style>{`       
+          ${props.calendarprops.stylejson}        
+        `}</Style>
           <RcDatePicker
             {...props}
             {...pickerProps}
