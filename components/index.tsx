@@ -31,7 +31,7 @@ class App extends Component {
   const stylejson = "";
   
   selectedvalue[cyear] = [cmonth];
-    this.state= {"calendarprops":{"minrange":1900,"maxrange":2020,"rangetype":"slider","stylejson":stylejson,"rangemode":true,"rangestart":2010,"rangeend":2019,"defaultyear":2011,"enablefiscal":false,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
+    this.state= {"calendarprops":{"minrange":1900,"maxrange":2020,"rangetype":"slider-text","stylejson":stylejson,"rangemode":true,"rangestart":2010,"rangeend":2019,"defaultyear":2011,"enablefiscal":false,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
   }
    onDateSelect(value){
      alert(value);
@@ -189,7 +189,7 @@ class App extends Component {
     );
   }
 }
- ReactDOM.render(<App/>, document.getElementById("root"));
+ //ReactDOM.render(<App/>, document.getElementById("root"));
 
 
 /* @remove-on-es-build-end */
