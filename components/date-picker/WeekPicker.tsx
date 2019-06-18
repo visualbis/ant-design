@@ -108,6 +108,7 @@ class WeekPicker extends React.Component<any, any> {
         locale={locale.lang}
         showDateInput={false}
         showToday={false}
+        calendarprops = {this.props.calendarprops}
         disabledDate={disabledDate}
       />
     );

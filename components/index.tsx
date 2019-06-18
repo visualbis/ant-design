@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import * as ReactDOM from "react-dom";
 import "./date-picker/style"
 import "./calendar/style"
+
 const {MonthPicker,WeekPicker} = DatePicker;
 const ENV = process.env.NODE_ENV;
 if (ENV !== 'production' &&
@@ -27,17 +28,34 @@ class App extends Component {
   const cmonth =  cdate.getMonth();
   const selectedvalue = {};
   
+  const stylejson = "";
   
   selectedvalue[cyear] = [cmonth];
-    this.state= {"calendarprops":{"defaultyear":2011,"enablefiscal":true,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
+    this.state= {"calendarprops":{"minrange":1900,"maxrange":2020,"rangetype":"slider-text","stylejson":stylejson,"rangemode":true,"rangestart":2010,"rangeend":2019,"defaultyear":2011,"enablefiscal":false,"type":"yqmm","open":true,"monthflow":"vertical","selectedvalue":selectedvalue},"selectedvalue":selectedvalue,type:"yqmm",monthflow:"horizontal"};
   }
    onDateSelect(value){
+     alert(value);
     const year = value._d.getFullYear();
     const month =  value._d.getMonth();
     this.updateSelectedValue(year,month);   
   }
   onQuarterSelect(year,month){
     this.updateSelectedValue(year,month);   
+  }
+  onRangeSelect(){
+    let state = this.state;
+    if(state.calendarprops.rangemode){
+      if(state.calendarprops.rangestart > state.calendarprops.rangeend){
+        state.calendarprops.rangeend = state.calendarprops.rangestart;
+      }
+      var _keys =  Object.keys(state.calendarprops.selectedvalue);
+      for(var key in state.calendarprops.selectedvalue){
+      if(_keys.indexOf(key) === -1){
+        delete state.calendarprops.selectedvalue[key];
+      }
+      }
+    }
+    this.setState(state);
   }
   disabledDate(value){   
     return false;
@@ -148,24 +166,34 @@ class App extends Component {
      }
 
     }
+
+    if(state.calendarprops.rangemode){
+      if(state.calendarprops.rangestart > state.calendarprops.rangeend){
+        state.calendarprops.rangeend = state.calendarprops.rangestart;
+      }
+      for(var i =  state.calendarprops.rangestart;i<= state.calendarprops.rangeend;i++){ 
+        state.calendarprops.selectedvalue[i] =  state.calendarprops.selectedvalue[year];
+      }
+    }
     this.setState(state);
 
   }
   render() {
     return (
       <div className="App" >
+    
        {/*  <WeekPicker open="false"/>  */}
-        <MonthPicker disabledDate={this.disabledDate.bind(this)} open={this.state.calendarprops.open} calendarprops={this.state.calendarprops} onSelect={this.onDateSelect.bind(this)} onQuarterSelect={this.onQuarterSelect.bind(this)}/>      
-     
+       <MonthPicker disabledDate={this.disabledDate.bind(this)} open={this.state.calendarprops.open} calendarprops={this.state.calendarprops} onSelect={this.onDateSelect.bind(this)} onQuarterSelect={this.onQuarterSelect.bind(this)} onRangeSelect={this.onRangeSelect.bind(this)}/>  
+      {/*    <WeekPicker calendarprops={this.state.calendarprops} onSelect={this.onDateSelect.bind(this)} open="true" placeholder="Select week" /> */}    
       </div>
     );
   }
 }
-//ReactDOM.render(<App/>, document.getElementById("root"));
+ //ReactDOM.render(<App/>, document.getElementById("root"));
 
 
 /* @remove-on-es-build-end */
-export  function loadEditor(element, options, config) {
+export  function loadEditor(element, options, config) {  
   ReactDOM.render(<MonthPicker  open={options.calendarprops.open} calendarprops={options.calendarprops} disabledDate={options.disabledDate.bind(this)} 
-  monthCellContentRender={options.contentRender.bind(this)} onSelect={options.onDateSelect.bind(this)} onQuarterSelect={options.onQuarterSelect.bind(this)} />, element);
+  monthCellContentRender={options.contentRender.bind(this)} onSelect={options.onDateSelect.bind(this)} onQuarterSelect={options.onQuarterSelect.bind(this)} onRangeSelect={options.onRangeSelect.bind(this)} />, element);
 }
